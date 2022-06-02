@@ -5,7 +5,8 @@ import { useState } from "react";
 import Appointment from "components/Appointment";
 import axios from "axios";
 import { useEffect } from "react";
-import { getAppointmentsForDay, getInterview } from "../helpers/selectors.js";
+import { getAppointmentsForDay, getInterview, getInterviewersForDay } from "../helpers/selectors.js";
+//import { useVisualMode } from "./hooks/useVisualMode"
 
 export default function Application(props) {
   
@@ -13,11 +14,12 @@ export default function Application(props) {
     day: "Monday",
     days: [],
     appointments: {},
+    interviewers: {}
   });
   const dailyAppointments = getAppointmentsForDay(state, state.day);
-
+  const interviewers = getInterviewersForDay(state, state.day)
   const appointment = dailyAppointments.map((appointment) => {
-     const interview = getInterview(state, appointment.interview);
+  const interview = getInterview(state, appointment.interview);
     
     return (
       <Appointment
@@ -25,18 +27,19 @@ export default function Application(props) {
         id={appointment.id}
         time={appointment.time}
          interview={interview}
+         interviewers={interviewers}
       />
     );
   });
 
-  const setDays = (days) => {
-    setState((prev) => ({ ...prev, days }));
-  };
+  // const setDays = (days) => {
+  //   setState((prev) => ({ ...prev, days }));
+  // };
   useEffect(() => {
     Promise.all([
-      axios.get("api/days"),
-      axios.get("api/appointments"),
-      axios.get("api/interviewers"),
+      axios.get("http://localhost:8001/api/days"),
+      axios.get("http://localhost:8001/api/appointments"),
+      axios.get("http://localhost:8001/api/interviewers"),
     ])
       .then((all) => {
         console.log("this is my all", all);
@@ -71,7 +74,10 @@ export default function Application(props) {
           alt="Lighthouse Labs"
         />
       </section>
-      <section className="schedule">{appointment}</section>
+      <section className="schedule">
+        {appointment}
+        <Appointment key='last' time="5pm" /> 
+        </section>
     </main>
   );
 }

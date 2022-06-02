@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import Button from 'components/Button';
 import InterviewerList from 'components/InterviewerList';
-import { action } from '@storybook/addon-actions/dist/preview';
 
 export default function Form (props){
   const [currentName, setName] = useState(props.name || "");
@@ -40,7 +39,7 @@ export default function Form (props){
       <section className="appointment__card-right">
         <section className="appointment__actions">
           <Button danger onClick={cancel}>Cancel</Button>
-          <Button confirm onSubmit={event => event.preventDefault()} onClick={event => props.onSave(currentName, currentInterviewer)}>Save</Button>
+          <Button confirm onSubmit={event => event.preventDefault()} >Save</Button>
         </section>
       </section>
     </main>
