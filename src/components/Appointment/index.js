@@ -42,7 +42,7 @@ const Appointment = (props) => {
   const confirmDelete = () => transition(CONFIRM);
 
   const handleDelete = (id) => {
-    transition(DELETE);
+    transition(DELETE, true);
     cancelInterview(id)
       .then(() => {
         transition(EMPTY);
