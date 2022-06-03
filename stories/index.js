@@ -9,7 +9,7 @@ import InterviewerList from "../src/components/InterviewerList"
 import Appointment from "../src/components/Appointment/index";
 import Header from "../src/components/Appointment/header"
 import Confirm from "../src/components/Appointment/confirm.js"
-import Show from "../src/components/Appointment/show";
+import Show from "../src/components/Appointment/Show";
 import Status from  "../src/components/Appointment/status";
 import Error from "../src/components/Appointment/error"
 import Form from "components/Appointment/Form";

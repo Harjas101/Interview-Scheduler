@@ -1,45 +1,34 @@
 export function getAppointmentsForDay(state, day) {
-  let appointmentArray = [];
-  let appointmentIds = [];
-
-  for (const stateDay of state.days) {
-    if (stateDay.name === day) {
-      appointmentIds = stateDay.appointments;
-    }
+  const { days, appointments } = state;
+  const filteredDay = days.find(item => day === item.name);
+  if (days.length < 1 || filteredDay === undefined) {
+    return [];
   }
-  console.log("+++++++++", appointmentIds);
-  for (const appointmentId of appointmentIds) {
-    console.log("---", appointmentId);
-
-    appointmentArray.push(state.appointments[appointmentId]);
-  }
-  console.log("this is appointment array", appointmentArray);
-  return appointmentArray;
+  const daysAppointment = filteredDay.appointments.map(id => appointments[id]);
+  return daysAppointment;
 }
 
 export function getInterview(state, interview) {
   if (!interview) {
     return null;
-  } else {
-    return {
-      student: interview.student,
-      interviewer: {
-        id: interview.interviewer,
-        name: state.interviewers[interview.interviewer].name,
-        avatar: state.interviewers[interview.interviewer].avatar,
-      },
-    };
   }
+
+  const interviewObject = {
+    student: interview.student,
+    interviewer: state.interviewers[interview.interviewer]
+  };
+
+  return interviewObject;
 }
 
 export function getInterviewersForDay(state, day) {
   const { days, interviewers } = state;
-  const filterDay = days.find((item) => day === item.name);
-  if (days.length < 1 || filterDay === undefined) {
+  const filteredDay = days.find(item => day === item.name);
+  if (days.length < 1 || filteredDay === undefined) {
     return [];
   }
-  const interviewDay = filterDay.interviewers.map(
-    (interview) => interviewers[interview]
+  const daysInterviewers = filteredDay.interviewers.map(
+    interview => interviewers[interview]
   );
-  return interviewDay;
+  return daysInterviewers;
 }

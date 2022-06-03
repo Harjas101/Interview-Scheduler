@@ -1,9 +1,6 @@
 import React from "react"
 export default function show(props){
-  console.log("this is my props in map", props)
-  // const interviewerName = props.interviewer.map(interviewerObj => interviewerObj.interviewer);
-  // console.log("props", props)
-  // console.log(interviewerName)
+ 
   return(
 <main className="appointment__card appointment__card--show">
   
@@ -20,11 +17,13 @@ export default function show(props){
       className="appointment__actions-button"
       src="images/edit.png"
       alt="edit"
+      onClick={props.onEdit}
       />
       <img 
       className="appointment__actions-button"
       src="images/trash.png"
       alt="delete"
+      onClick={props.onDelete}
       />
     </section>
   </section>

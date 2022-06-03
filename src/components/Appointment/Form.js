@@ -4,7 +4,7 @@ import InterviewerList from 'components/InterviewerList';
 
 export default function Form (props){
   const [currentName, setName] = useState(props.name || "");
-  const [currentInterviewer, setInterviewer] = useState(props.value || null)
+  const [currentInterviewer, setInterviewer] = useState(props.interviewer || null)
   
   const reset = () => {
     setName("")
@@ -22,7 +22,7 @@ export default function Form (props){
         <form autoComplete="off">
           <input
             className="appointment__create-input text--semi-bold"
-            name={props.name}
+            name='name'
             type="text"        
             onChange={(event) => setName(event.target.value)}            
             value={currentName}
@@ -34,12 +34,13 @@ export default function Form (props){
           />
 
         </form>
-        <InterviewerList interviewers={props.interviewers} value={currentInterviewer} onChange={(event) => setInterviewer(event)} />
+        <InterviewerList interviewers={props.interviewers} value={currentInterviewer} onChange={setInterviewer} />
       </section>
       <section className="appointment__card-right">
         <section className="appointment__actions">
           <Button danger onClick={cancel}>Cancel</Button>
-          <Button confirm onSubmit={event => event.preventDefault()} >Save</Button>
+          <Button confirm onSubmit={event => event.preventDefault()} 
+          onClick={() => props.onSave(currentName, currentInterviewer)}>Save</Button>
         </section>
       </section>
     </main>
