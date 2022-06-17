@@ -13,13 +13,13 @@ import { render, cleanup } from "@testing-library/react";
   We import the component that we are testing
 */
 import Appointment from "components/Appointment";
-import Confirm from "components/Appointment/Confirm";
+import Confirm from "components/Appointment/confirm";
 import Empty from "components/Appointment/Empty";
 import Error from "components/Appointment/Error";
 import Form from "components/Appointment/Form";
-import Header from "components/Appointment/Header";
+import Header from "components/Appointment/header";
 import Show from "components/Appointment/Show";
-import Status from "components/Appointment/Status";
+import Status from "components/Appointment/status";
 
 /*
   A test that renders a React Component

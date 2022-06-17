@@ -1,4 +1,4 @@
-import React from "react";
+
 import { useEffect, useState } from "react";
 import axios from "axios";
 
@@ -36,7 +36,7 @@ function bookInterview(id, interview) {
     ...state.appointments,
     [id]: appointment,
   };
-  return axios
+  return (axios
       .put(`http://localhost:8001/api/appointments/${id}`, { interview })
       .then(() => {
         const spotUpdate = updateSpots(state.day, state.days, "REMOVE_SPOT");
@@ -45,7 +45,7 @@ function bookInterview(id, interview) {
           days: spotUpdate,
           appointments
         });
-      });
+      }));
 }
 const cancelInterview = id => {
   const appointment = {
@@ -58,7 +58,7 @@ const cancelInterview = id => {
     [id]: appointment
   };
   
-  return axios
+  return (axios
       .delete(`http://localhost:8001/api/appointments/${id}`)
       .then(() => {
         const spotUpdate = updateSpots(state.day, state.days, "ADD_SPOT");
@@ -67,7 +67,7 @@ const cancelInterview = id => {
           days: spotUpdate,
           appointments
         });
-      });
+      }));
 }
 const spotUpdate = (weekday, day, variable) => {
   let spot = day.spots;
