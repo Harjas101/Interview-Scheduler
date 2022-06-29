@@ -39,7 +39,10 @@ function bookInterview(id, interview) {
   return (axios
       .put(`http://localhost:8001/api/appointments/${id}`, { interview })
       .then(() => {
-        const spotUpdate = updateSpots(state.day, state.days, "REMOVE_SPOT");
+        console.log(state.days, "this is my state.days")
+        const spotUpdate = updateSpots(state.days, appointments);
+        console.log(spotUpdate, "this is my spotUpdate")
+        
         setState({
           ...state,
           days: spotUpdate,
@@ -61,7 +64,7 @@ const cancelInterview = id => {
   return (axios
       .delete(`http://localhost:8001/api/appointments/${id}`)
       .then(() => {
-        const spotUpdate = updateSpots(state.day, state.days, "ADD_SPOT");
+        const spotUpdate = updateSpots(state.days, appointments);
         setState({
           ...state,
           days: spotUpdate,
@@ -69,36 +72,28 @@ const cancelInterview = id => {
         });
       }));
 }
-const spotUpdate = (weekday, day, variable) => {
-  let spot = day.spots;
-  if (weekday === day.name && variable === "REMOVE_SPOT") {
-    return spot - 1;
-  } else if (weekday === day.name && variable === "ADD_SPOT") {
-    return spot + 1;
-  } else {
-    return spot;
+const spotUpdate = (day, appointments) => {
+  let freeSpots = 0
+  for(const appointmentID of day.appointments){
+    const appointment = appointments[appointmentID]
+   if (appointment.interview === null){
+    freeSpots +=1
+   }
   }
+  return freeSpots
+
 };
 
-const updateSpots = (weekday, days, variable) => {
-  if (variable === "REMOVE_SPOT") {
+const updateSpots = ( days, appointments) => {
+  
     const updatedStateDayArray = days.map(day => {
       return {
         ...day,
-        spots: spotUpdate(weekday, day, variable)
+        spots: spotUpdate( day, appointments)
       };
     });
     return updatedStateDayArray;
-  }
-  if (variable === "ADD_SPOT") {
-    const updatedStateDayArray = days.map(day => {
-      return {
-        ...day,
-        spots: spotUpdate(weekday, day, variable)
-      };
-    });
-    return updatedStateDayArray;
-  }
+  
 };
 const setDay = (day) => setState({ ...state, day });
 return {

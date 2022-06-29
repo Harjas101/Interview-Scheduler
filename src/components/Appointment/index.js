@@ -36,7 +36,10 @@ const Appointment = (props) => {
       .then(() => {
         transition(SHOW);
       })
-      .catch(() => transition(ERROR_SAVE, true));
+      .catch((error) => {
+        console.error(error)
+        transition(ERROR_SAVE, true);
+      });
   };
 
   const confirmDelete = () => transition(CONFIRM);
@@ -80,7 +83,7 @@ const Appointment = (props) => {
         {mode === SAVE && <Status message={"Saving"} />}
         {mode === DELETE && <Status message={"Deleting"} />}
         {mode === CONFIRM && (
-          <Confirm 
+          <Confirm
             message={"Are you sure you would like to delete?"}
             onCancel={back}
             onConfirm={() => handleDelete(id)}
