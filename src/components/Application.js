@@ -8,17 +8,17 @@ import {
   getInterview,
   getInterviewersForDay,
 } from "../helpers/selectors.js";
-//import { useVisualMode } from "./hooks/useVisualMode"
+
 
 export default function Application(props) {
-  const {state, setDay, bookInterview, cancelInterview} = useApplicationData()
- 
+  const { state, setDay, bookInterview, cancelInterview } = useApplicationData();
+
   const dailyAppointments = getAppointmentsForDay(state, state.day);
   const interviewers = getInterviewersForDay(state, state.day);
   const appointment = dailyAppointments.map((appointment) => {
     const interview = getInterview(state, appointment.interview);
 
-    
+
     return (
       <Appointment
         key={appointment.id}

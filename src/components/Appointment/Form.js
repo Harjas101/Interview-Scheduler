@@ -19,10 +19,10 @@ const Form = props => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    validate()
+    validate();
   };
 
-  const validate = function() {
+  const validate = function () {
     if (student === "") {
       setError("Student name cannot be blank");
       return;
@@ -48,7 +48,7 @@ const Form = props => {
             value={student}
             onChange={event => {
               setStudent(event.target.value);
-            }} 
+            }}
             data-testid="student-name-input"
           />
           <section className="appointment_validation">{error}</section>
