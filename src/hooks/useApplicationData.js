@@ -39,10 +39,7 @@ function bookInterview(id, interview) {
   return (axios
       .put(`http://localhost:8001/api/appointments/${id}`, { interview })
       .then(() => {
-        console.log(state.days, "this is my state.days")
         const spotUpdate = updateSpots(state.days, appointments);
-        console.log(spotUpdate, "this is my spotUpdate")
-        
         setState({
           ...state,
           days: spotUpdate,
