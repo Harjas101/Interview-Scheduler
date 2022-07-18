@@ -37,7 +37,7 @@ const useApplicationData = () => {
       [id]: appointment,
     };
     return (axios
-      .put(`http://localhost:8001/api/appointments/${id}`, { interview })
+      .put(`/api/appointments/${id}`, { interview })
       .then(() => {
         const spotUpdate = updateSpots(state.days, appointments);
         setState({
@@ -59,7 +59,7 @@ const useApplicationData = () => {
     };
 
     return (axios
-      .delete(`http://localhost:8001/api/appointments/${id}`)
+      .delete(`/api/appointments/${id}`)
       .then(() => {
         const spotUpdate = updateSpots(state.days, appointments);
         setState({
