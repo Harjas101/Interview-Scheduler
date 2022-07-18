@@ -12,7 +12,7 @@ import Header from "../src/components/Appointment/header";
 import Confirm from "../src/components/Appointment/confirm.js";
 import Show from "../src/components/Appointment/Show";
 import Status from "../src/components/Appointment/status";
-import Error from "../src/components/Appointment/error";
+import Error from "../src/components/Appointment/Error";
 import Form from "components/Appointment/Form";
 import { Fragment } from "react";
 
