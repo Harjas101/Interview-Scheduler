@@ -3,12 +3,12 @@ import "./styles.scss";
 
 import useVisualMode from "../../hooks/useVisualMode";
 
-import Header from "./header";
+import Header from "./Header";
 import Show from "./Show";
 import Empty from "./Empty";
 import Form from "./Form";
-import Status from "./status";
-import Confirm from "./confirm";
+import Status from "./Status";
+import Confirm from "./Confirm";
 import Error from "./Error";
 
 const EMPTY = "EMPTY";
