@@ -1,5 +1,4 @@
 import React from "react";
-import axios from "axios";
 import "@testing-library/jest-dom";
 import {
   render,
@@ -13,7 +12,7 @@ import {
   queryByText,
   queryByAltText,
 } from "@testing-library/react";
-import confirm from "components/Appointment/confirm";
+import Confirm from "components/Appointment/Confirm";
 import Application from "components/Application";
 
 describe("Application", () => {
