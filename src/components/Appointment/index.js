@@ -65,7 +65,6 @@ const Appointment = (props) => {
   }, [interview, transition, mode]);
 
   return (
-    <>
       <article className="appointment" data-testid="appointment">
         <Header time={time} />
         {mode === EMPTY && <Empty onAdd={() => transition(CREATE)} />}
@@ -105,7 +104,6 @@ const Appointment = (props) => {
           <Error message="Could not delete appointment" onClose={back} />
         )}
       </article>
-    </>
   );
 };
 
