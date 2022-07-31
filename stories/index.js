@@ -1,6 +1,6 @@
 import React from "react";
 import DayListItem from "../src/components/DayListItem";
-import DayList from "components/dayList";
+import DayList from "components/DayList";
 import { storiesOf } from "@storybook/react";
 import { action } from "@storybook/addon-actions";
 import InterviewerListItem from "components/InterviewerListItem";
@@ -143,8 +143,8 @@ storiesOf("Appointment", module)
   .add("Appointment", () => <Appointment />)
   .add("Appointment with time", () => <Appointment time="12pm" />)
   .add("Header", () => <Header time="12pm" />)
-  .add("empty", () => <empty onAdd={action("onAdd")} />)
-  .add("show", () => (
+  .add("Empty", () => <empty onAdd={action("onAdd")} />)
+  .add("Show", () => (
     <Show
       student="lydia Miller-Jones"
       interviewer={interviewer}
