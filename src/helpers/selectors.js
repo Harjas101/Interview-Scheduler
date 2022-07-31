@@ -1,6 +1,7 @@
 export function getAppointmentsForDay(state, day) {
   const { days, appointments } = state;
   const filteredDay = days.find(item => day === item.name);
+// if days is less than one of undefined return empty array
   if (days.length < 1 || filteredDay === undefined) {
     return [];
   }
@@ -24,6 +25,7 @@ export function getInterview(state, interview) {
 export function getInterviewersForDay(state, day) {
   const { days, interviewers } = state;
   const filteredDay = days.find(item => day === item.name);
+  // if day is empty then return and empty array
   if (days.length < 1 || filteredDay === undefined) {
     return [];
   }

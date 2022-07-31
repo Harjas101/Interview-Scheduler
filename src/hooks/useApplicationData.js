@@ -69,6 +69,7 @@ const useApplicationData = () => {
         });
       }));
   };
+  // update spots function, loop through appointments and if its null add one spot
   const spotUpdate = (day, appointments) => {
     let freeSpots = 0;
     for (const appointmentID of day.appointments) {
