@@ -23,3 +23,5 @@ npm test
 npm run storybook
 ```
 
+![screenshot1](https://github.com/Harjas101/Interview-Scheduler/blob/master/scheduler2.png?raw=true)
+![screenshot2](https://github.com/Harjas101/Interview-Scheduler/blob/master/scheduler.png?raw=true)
