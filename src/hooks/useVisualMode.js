@@ -1,5 +1,6 @@
-import { useState } from "react";
+// useVisualMode uses the initial state and makes a copy, the copy serves the purpose of making it mutable without changing the initial values. it is important so it does not change the component hierarchy 
 
+import { useState } from "react";
 const useVisualMode = (initial) => {
   const [history, setHistory] = useState([initial]);
 
