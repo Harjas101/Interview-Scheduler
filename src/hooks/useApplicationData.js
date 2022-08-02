@@ -1,4 +1,4 @@
-
+// proxy is set in the package.json so code isnt cluttered and easier to modify depending on the enviorment 
 import { useEffect, useState } from "react";
 import axios from "axios";
 
